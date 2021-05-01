@@ -1,15 +1,17 @@
+import { Router } from '@angular/router';
 import { environment } from './../../environments/environment';
 import { User } from './user';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { tap, catchError} from 'rxjs/operators';
 import { throwError } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
   loggedIn = false;
   path = environment.apiUrl + '/users';
   login(user: User) {
@@ -17,6 +19,7 @@ export class AccountService {
       if(data.response == "true"){
         this.loggedIn = true;
         localStorage.setItem('logged', JSON.stringify(user))
+        this.router.navigate(['/books']);
       } else {
         this.loggedIn = false;
       }
@@ -40,10 +43,16 @@ export class AccountService {
     return throwError(errorMessage);
   }
   isLoggedIn(): boolean {
-    console.log(this.loggedIn);
+    if(localStorage.getItem('logged') !== null)
+    {
+      this.loggedIn = true;
+    } else {
+      this.loggedIn = false;
+    }
     return this.loggedIn;
   }
   logout() {
     localStorage.removeItem('logged');
+    this.router.navigate(['/login']);
   }
 }

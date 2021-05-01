@@ -6,10 +6,10 @@ import { BooksComponent } from './books/books.component';
 import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './login/login.guard';
 const routes: Routes = [
-  { path:'', redirectTo: 'books', pathMatch: 'full' },
-  { path:'books', component:BooksComponent },
+  { path:'', redirectTo: 'login', pathMatch: 'full' },
+  { path:'books', component:BooksComponent, canActivate: [LoginGuard]},
   { path:'books/add', component:AddBookComponent, canActivate:[LoginGuard]},
-  { path:'books/edit/:bookId', component:EditBookComponent},
+  { path:'books/edit/:bookId', component:EditBookComponent, canActivate:[LoginGuard]},
   { path:'login', component: LoginComponent}
 
 ];

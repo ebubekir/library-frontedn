@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../services/books.service';
 import { Book } from './book';
@@ -10,7 +11,7 @@ import { Book } from './book';
 })
 export class BooksComponent implements OnInit {
 
-  constructor(private bookService: BooksService) { }
+  constructor(private bookService: BooksService, private router: Router) { }
   title = "Books List";
   filterText = "";
   books: Book[] = [];
@@ -20,6 +21,7 @@ export class BooksComponent implements OnInit {
 
   deleteBook(id: string){
     this.bookService.deleteBook(id);
+    window.location.reload();
   }
 
 }
