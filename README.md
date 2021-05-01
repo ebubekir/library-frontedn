@@ -1,8 +1,7 @@
 # Libraryfront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
-[![Screencast-from-01-05-2021-16_10_34.gif](https://s3.gifyu.com/images/Screencast-from-01-05-2021-16_10_34.gif)](https://gifyu.com/image/5s06)
-
+[![gifd823f9ce6d64d45e.gif](https://s3.gifyu.com/images/gifd823f9ce6d64d45e.gif)](https://gifyu.com/image/5sCN)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
