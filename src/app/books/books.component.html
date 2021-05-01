@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">{{ title }}</h1>
+</div>
+<input [(ngModel)]="filterText" class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+<small *ngIf="filterText">Search term: {{ filterText }}</small>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books | bookFilter:filterText">
+      <th scope="row">{{ book.id }}</th>
+      <td>{{book.name}}</td>
+      <td>{{book.author}}</td>
+      <td>
+          <a routerLink='/books/edit/{{book.id}}'><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+          <button type="button" class="btn btn-danger btn-sm" (click)="deleteBook(book.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

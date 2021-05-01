@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">{{ title }}</h1>
+</div>
+<div class="col-md-6">
+  <form #addBookForm="ngForm" (ngSubmit)="update(addBookForm)">
+      <div class="form-group">
+        <label for="bookName">Book Name</label>
+        <input type="text" class="form-control" id="bookName" name="bookName"
+        #name="ngModel" [(ngModel)]="model.name" required>
+      </div>
+
+      <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" class="form-control" id="author" name="author"
+          #name="ngModel" [(ngModel)]="model.author" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary"
+       [disabled]="addBookForm.invalid">Update</button>
+    </form>
+    <button style="margin-top: 15px" class="btn btn-secondary" (click)="goBack()">Go Back</button>
+
+</div>
